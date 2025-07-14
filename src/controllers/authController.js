@@ -6,9 +6,13 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 
 const register = async (req, res) => {
-  const { name, email, password, skills } = req.body;
+   console.log('Incoming registration data:', req.body); // 👈 Add this
+  const { name, email, password } = req.body;
+  console.log('Received request body:', req.body);
+
   try {
     const existingUser = await User.findOne({ email });
+    console.log('Found existing user:', existingUser); 
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
     }
@@ -18,17 +22,18 @@ const register = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      skills
     });
-
+    
     res.status(201).json({ message: 'User registered', user });
   } catch (err) {
+    console.error('Registration Error:', err);
     res.status(500).json({ message: err.message });
   }
 };
 
 const login = async (req, res) => {
   const { email, password } = req.body;
+
   try {
     const user = await User.findOne({ email });
     if (!user) {
@@ -41,18 +46,19 @@ const login = async (req, res) => {
     }
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '1d'
+      expiresIn: '1d',
     });
 
     res.json({ token, user });
   } catch (err) {
+    console.error('Login Error:', err);
     res.status(500).json({ message: err.message });
   }
 };
 
-// ✅ Export both functions as CommonJS module
 module.exports = {
   register,
-  login
+  login,
 };
+
 

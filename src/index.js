@@ -57,9 +57,17 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+app.use(
+  cors({
+    origin: 'http://localhost:5173', // ✅ No trailing slash!
+    credentials: true, // ✅ Optional if you're using cookies
+  })
+);
 
-// Routes
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
 app.get('/', (req, res) => {
   res.status(200).json({
     message: '🎉 Welcome to UstaadX API!',
