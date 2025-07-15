@@ -1,20 +1,6 @@
 // File: src/controllers/bookingController.js
 const Booking = require('../models/Booking');
 
-// const requestBooking = async (req, res) => {
-//   const { toUser } = req.body;
-//   try {
-//     const booking = await Booking.create({
-//       fromUser: req.user.id,
-//       toUser
-//     });
-//     res.status(201).json(booking);
-//   } catch (err) {
-//     res.status(500).json({ message: err.message });
-//   }
-// };
-
-
 const requestBooking = async (req, res) => {
   console.log(req.body);
   const { toUser, skill, time, message } = req.body;
