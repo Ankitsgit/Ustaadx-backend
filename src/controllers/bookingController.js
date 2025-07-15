@@ -1,18 +1,43 @@
 // File: src/controllers/bookingController.js
 const Booking = require('../models/Booking');
 
+// const requestBooking = async (req, res) => {
+//   const { toUser } = req.body;
+//   try {
+//     const booking = await Booking.create({
+//       fromUser: req.user.id,
+//       toUser
+//     });
+//     res.status(201).json(booking);
+//   } catch (err) {
+//     res.status(500).json({ message: err.message });
+//   }
+// };
+
+
 const requestBooking = async (req, res) => {
-  const { toUser } = req.body;
+  console.log(req.body);
+  const { toUser, skill, time, message } = req.body;
+
+  // ❌ Prevent self-booking
+  if (toUser === req.user.id) {
+    return res.status(400).json({ message: "You cannot book a session with yourself." });
+  }
+
   try {
     const booking = await Booking.create({
       fromUser: req.user.id,
-      toUser
+      toUser,
+      skill,
+      time,
+      message
     });
     res.status(201).json(booking);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
+
 
 const respondBooking = async (req, res) => {
   const { id } = req.params;

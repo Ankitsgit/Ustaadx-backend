@@ -10,6 +10,7 @@ const protect = require('../middleware/protect');
 
 const router = express.Router();
 
+// router.get('/', getAllUsers); // 🔓 No protect middleware
 
 router.get('/', protect, getAllUsers);              // GET all users
 router.get('/me', protect, getCurrentUser);         // ✅ GET logged-in user's profile

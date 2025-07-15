@@ -78,7 +78,7 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/chat', chatRoutes);
-app.use('/api/booking', bookingRoutes);
+app.use('/api/bookings', bookingRoutes);
 
 // Connect DB and Start Server
 connectDB()
