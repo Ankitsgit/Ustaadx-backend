@@ -77,7 +77,7 @@ cp .env.example .env
 
 # Start server
 npm run dev
-
+````
 ### Frontend Setup
 
 The frontend repository is available at: [UstaadX Frontend](https://github.com/Ankitsgit/UstaadX)
@@ -89,98 +89,153 @@ cd client
 
 # Follow frontend-specific setup instructions
 ```
-🌍 Environment Variables
-.env (Backend)
-env
-Copy
-Edit
-PORT=8000
+
+### Environment Variables
+
+Create a `.env` file in the `\Ustaadx-backend` directory:
+```env
+# Database
 MONGO_URI=your_mongodb_uri
+
+
+
+# Security
 JWT_SECRET=your_jwt_secret
-CLIENT_URL=http://localhost:5173
-.env (Frontend)
-env
-Copy
-Edit
-VITE_API_URL=http://localhost:8000
-🧪 Testing
-bash
-Copy
-Edit
+DEBUG=True
+
+# External APIs
+# Add your API keys here
+```
+
+## 🧪 Testing
 # Run backend tests (if configured)
+```bash
 npm test
-📁 Project Structure
-csharp
-Copy
-Edit
-ustaadx/
-├── client/               # React frontend
-│   ├── src/
-│   └── public/
-├── server/               # Node/Express backend
-│   ├── routes/
-│   ├── controllers/
-│   ├── models/
-│   └── config/
-🖼️ UI Screenshots
-(Add UI screenshots of home page, chat, dashboard, etc.)
+```
 
-🚀 Deployment
-✅ Frontend on Vercel
-Push frontend to GitHub
+## 🤝 Contributing
 
-Go to Vercel > New Project
+We welcome contributions! Here's how you can help:
 
-Select repo and set the env variable:
+### Getting Started
 
-ini
-Copy
-Edit
-VITE_API_URL=https://your-backend-url.com
-Build command: npm run build
+1. **Fork the repository**
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. **Make your changes**
+4. **Run tests**
+   ```bash
+   python manage.py test
+   ```
+5. **Commit your changes**
+   ```bash
+   git commit -m 'Add some amazing feature'
+   ```
+6. **Push to the branch**
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+7. **Open a Pull Request**
 
-Output directory: dist
+### Development Guidelines
 
-✅ Backend on Render (or EC2)
-Go to Render
+- Follow PEP 8 style guidelines
+- Write meaningful commit messages
+- Add tests for new features
+- Update documentation as needed
+- Ensure all tests pass before submitting PR
 
-Select Web Service
+### Code Style
 
-Connect repo or upload code
+```bash
+# Install development dependencies
+pip install black flake8 isort
 
-Set environment variables:
+# Format code
+black .
 
-PORT
+# Sort imports
+isort .
 
-MONGO_URI
+# Lint code
+flake8 .
+```
 
-JWT_SECRET
+## 📁 Project Structure
 
-CLIENT_URL=https://your-vercel-frontend.vercel.app
+```
+ustaadx-backend/
+├── config/
+│   └── db.js                        # MongoDB connection setup
+│
+├── controllers/
+│   ├── authController.js           # Handles login, register, auth logic
+│   ├── bookingController.js        # Booking creation & retrieval
+│   ├── chatController.js           # Real-time chat/message logic
+│   ├── exploreController.js        # Fetching recent skill exchange posts
+│   └── userController.js           # User profile and data handling
+│
+├── middleware/
+│   ├── authMiddleware.js           # JWT verification
+│   └── protect.js                  # Route protection logic
+│
+├── models/
+│   ├── Booking.js                  # Booking schema
+│   ├── Message.js                  # Message/chat schema
+│   └── User.js                     # User model schema
+│
+├── routes/
+│   ├── auth.js                     # Auth API routes
+│   ├── bookings.js                 # Booking-related routes
+│   ├── chat.js                     # Chat routes (Socket or REST fallback)
+│   ├── explore.js                  # Explore posts route
+│   ├── users.js                    # User profile routes
+│   ├── constant.js                 # Constants or shared values
+│   └── index.js                    # Combine all routes
+│
+├── public/                         # Static file assets (if any)
+├── .env                            # Environment config
+├── package.json                    # Node project metadata and scripts
+├── package-lock.json               # Locked dependency tree
+└── README.md                       # Project documentation
 
-🤝 Contributing
-We welcome contributions from the open source community.
+```
 
-To Contribute:
-Fork the repository
+## 🐛 Issue Reporting
 
-Create a new branch:
+Found a bug? Have a suggestion? Please create an issue:
 
-bash
-Copy
-Edit
-git checkout -b feature/your-feature-name
-Make your changes
+1. Check existing issues first
+2. Use the issue template
+3. Provide detailed description
+4. Include steps to reproduce
+5. Add relevant labels
 
-Push your branch:
+## 📝 License
 
-bash
-Copy
-Edit
-git push origin feature/your-feature-name
-Open a pull request
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-🙏 Acknowledgements
+## 🌐 Related Projects
+
+- **Frontend**: [UstaadX Frontend](https://github.com/Ankitsgit/UstaadX)
+- **Mobile App**: Coming soon...
+
+## 👥 Team
+
+- **Ankit** - Lead Developer
+- **Email** -ankit77us@gmail.com
+- **Github** -@ankitsgit
+
+Email: ankitshukla@email.com
+
+
+
+
+
+## 🙏 Acknowledgments
+
 Socket.IO team for real-time magic
 
 ShadCN for modern UI inspiration
@@ -189,14 +244,14 @@ MongoDB for flexible data modeling
 
 All open-source contributors ❤️
 
-📄 License
-This project is licensed under the MIT License
+## 📞 Support
 
-📬 Contact
-Project Lead: Ankit Shukla
+- Create an [issue](https://github.com/Ankitsgit/Ustaadx-backend/issues) for bug reports
+- Start a [discussion](https://github.com/Ankitsgit/Ustaadx-backend/discussions) for questions
+- Contact the maintainers for urgent matters
 
-Email: ankitshukla@email.com
+---
 
-GitHub: @yourgithub
+Made with ❤️ by Ankit 
+=======
 
-Made with 💡 for community learners around the world.
