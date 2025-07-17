@@ -1,6 +1,6 @@
 # 🧠 UstaadX – Peer-to-Peer Skill Exchange Platform
 
-[![MIT License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
+<!-- [![MIT License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE) -->
 [![React](https://img.shields.io/badge/frontend-React-blue)](https://reactjs.org)
 [![Node.js](https://img.shields.io/badge/backend-Node.js-green)](https://nodejs.org)
 [![MongoDB](https://img.shields.io/badge/database-MongoDB-brightgreen)](https://mongodb.com)
