@@ -229,7 +229,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Email** -ankit77us@gmail.com
 - **Github** -@ankitsgit
 
-Email: ankitshukla@email.com
+
 
 
 
@@ -237,13 +237,13 @@ Email: ankitshukla@email.com
 
 ## 🙏 Acknowledgments
 
-Socket.IO team for real-time magic
+-Socket.IO team for real-time magic
 
-ShadCN for modern UI inspiration
+-ShadCN for modern UI inspiration
 
-MongoDB for flexible data modeling
+-MongoDB for flexible data modeling
 
-All open-source contributors ❤️
+-All open-source contributors ❤️
 
 ## 📞 Support
 
