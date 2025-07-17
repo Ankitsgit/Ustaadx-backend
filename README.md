@@ -8,6 +8,7 @@
 **UstaadX** is a collaborative platform where learners and experts can connect, teach, and learn from each other in a fair exchange-based ecosystem. Whether it's coding, music, dance, or design—UstaadX is your digital learning bazaar.
 
 ---
+![UstaadX Preview](public/assets/UstaasX.mp4)
 
 ## 🌟 Features
 
