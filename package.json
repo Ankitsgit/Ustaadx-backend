@@ -2,7 +2,7 @@
   "name": "ustaadx-backend",
   "version": "1.0.0",
   "description": "UstaadX – A peer-to-peer skill exchange platform where everyone is a teacher and a learner.",
-  "main": "index.js",
+  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js",
