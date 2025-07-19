@@ -6,10 +6,10 @@ const mongoose = require('mongoose');
 
 const bookingSchema = new mongoose.Schema(
   {
-  fromUser: { type: mongoose.Schema.Types.ObjectId, ref: 'User',unique: true  },
+  fromUser: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   toUser: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  skill: { type: String , required: true},
-  timeslot: { type: String, required: true },
+  skill: { type: String , required: true,unique: true },
+  timeslot: { type: String, required: true ,unique: true },
   message: { type: String },
   status: {
     type: String,
