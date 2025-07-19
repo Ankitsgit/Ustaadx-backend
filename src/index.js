@@ -18,7 +18,7 @@ const app = express();
 const server = http.createServer(app); // ✅ Create HTTP server manually
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173', // your frontend
+    origin: 'https://ustaad-x.vercel.app/', // your frontend
     credentials: true
   }
 });
@@ -71,7 +71,7 @@ io.on('connection', (socket) => {
 
 // CORS and Middlewares
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://ustaad-x.vercel.app/',
   credentials: true,
 }));
 app.use(express.json());
