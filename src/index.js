@@ -18,10 +18,11 @@ const app = express();
 const server = http.createServer(app); // ✅ Create HTTP server manually
 const io = new Server(server, {
   cors: {
-    origin: 'https://ustaad-x.vercel.app/', // your frontend
+    origin: 'https://ustaad-x.vercel.app', // your frontend
     credentials: true
   }
 });
+
 
 // 🔄 Store online users (key: userId, value: socket.id)
 const onlineUsers = new Map();
@@ -70,10 +71,17 @@ io.on('connection', (socket) => {
 });
 
 // CORS and Middlewares
+// app.use(cors({
+//   origin: 'https://ustaad-x.vercel.app',
+//   credentials: true,
+// }));
 app.use(cors({
-  origin: 'https://ustaad-x.vercel.app/',
+  origin: 'https://ustaad-x.vercel.app',
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
