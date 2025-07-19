@@ -8,8 +8,8 @@ const bookingSchema = new mongoose.Schema(
   {
   fromUser: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   toUser: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  skill: { type: String , required: true,unique: true },
-  timeslot: { type: String, required: true ,unique: true },
+  skill: { type: String , required: true},
+  timeslot: { type: String, required: true },
   message: { type: String },
   status: {
     type: String,

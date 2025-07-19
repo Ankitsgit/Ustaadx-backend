@@ -1,11 +1,32 @@
 // File: src/controllers/bookingController.js
 const Booking = require('../models/Booking');
 
+// const requestBooking = async (req, res) => {
+//   console.log(req.body);
+//   const { toUser, skill, time, message } = req.body;
+
+//   // ❌ Prevent self-booking
+//   if (toUser === req.user.id) {
+//     return res.status(400).json({ message: "You cannot book a session with yourself." });
+//   }
+
+//   try {
+//     const booking = await Booking.create({
+//       fromUser: req.user.id,
+//       toUser,
+//       skill,
+//       time,
+//       message
+//     });
+//     res.status(201).json(booking);
+//   } catch (err) {
+//     res.status(500).json({ message: err.message });
+//   }
+// };
 const requestBooking = async (req, res) => {
   console.log(req.body);
-  const { toUser, skill, time, message } = req.body;
+  const { toUser, skill, timeslot, message } = req.body;
 
-  // ❌ Prevent self-booking
   if (toUser === req.user.id) {
     return res.status(400).json({ message: "You cannot book a session with yourself." });
   }
@@ -15,14 +36,16 @@ const requestBooking = async (req, res) => {
       fromUser: req.user.id,
       toUser,
       skill,
-      time,
+      timeslot,
       message
     });
     res.status(201).json(booking);
   } catch (err) {
+    console.error("Booking Error:", err);
     res.status(500).json({ message: err.message });
   }
 };
+
 
 
 const respondBooking = async (req, res) => {
