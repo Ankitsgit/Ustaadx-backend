@@ -17,6 +17,6 @@ const router = express.Router();
 router.get('/', protect, getAllUsers);              // GET all users
 router.get('/me', protect, getCurrentUser);         // ✅ GET logged-in user's profile
 router.put('/me', protect, updateCurrentUser);      // ✅ Update logged-in user's profile
-router.post('/upload-profile', protect, upload.single('image'), uploadProfileImage);
+router.post('/upload-profile', protect, upload.single('profileImage'), uploadProfileImage);
 
 module.exports = router;
