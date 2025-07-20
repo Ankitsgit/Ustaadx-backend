@@ -4,8 +4,10 @@ const express = require('express');
 const {
   getAllUsers,
   getCurrentUser,
-  updateCurrentUser
+  updateCurrentUser,
+  uploadProfileImage 
 } = require('../controllers/userController');
+const upload = require('../middleware/upload'); // multer config
 const protect = require('../middleware/protect');
 
 const router = express.Router();
@@ -15,6 +17,6 @@ const router = express.Router();
 router.get('/', protect, getAllUsers);              // GET all users
 router.get('/me', protect, getCurrentUser);         // ✅ GET logged-in user's profile
 router.put('/me', protect, updateCurrentUser);      // ✅ Update logged-in user's profile
-
+router.post('/upload-profile', protect, upload.single('image'), uploadProfileImage);
 
 module.exports = router;

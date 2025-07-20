@@ -2,7 +2,6 @@
   "name": "ustaadx-backend",
   "version": "1.0.0",
   "description": "UstaadX – A peer-to-peer skill exchange platform where everyone is a teacher and a learner.",
-  
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js",
@@ -26,6 +25,7 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.16.3",
+    "multer": "^2.0.2",
     "socket.io": "^4.8.1",
     "validator": "^13.15.15"
   },

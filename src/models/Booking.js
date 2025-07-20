@@ -11,6 +11,7 @@ const bookingSchema = new mongoose.Schema(
   skill: { type: String , required: true},
   timeslot: { type: String, required: true },
   message: { type: String },
+  
   status: {
     type: String,
     enum: ["pending", "accepted", "rejected"],

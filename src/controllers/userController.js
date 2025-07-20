@@ -49,8 +49,31 @@ const updateCurrentUser = async (req, res) => {
   }
 };
 
+
+
+const uploadProfileImage = async (req, res) => {
+  try {
+    if (!req.file) return res.status(400).json({ message: 'No image uploaded' });
+
+    const user = await User.findByIdAndUpdate(
+      req.user.id,
+      { profileImage: `/uploads/profile-images/${req.file.filename}` },
+      { new: true }
+    );
+
+    res.json({ message: 'Image uploaded successfully', user });
+  } catch (err) {
+    console.error('Upload error:', err);
+    res.status(500).json({ message: err.message });
+  }
+};
+
+
+
+
 module.exports = {
   getAllUsers,
   getCurrentUser,
-  updateCurrentUser
+  updateCurrentUser,
+  uploadProfileImage
 };

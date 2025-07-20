@@ -12,7 +12,11 @@ const userSchema = new mongoose.Schema(
     skillsOffered: [String],
     skillsWanted: [String],
     availability: [String],
-    profileImage: String,
+    profileImage: {
+    type: String,
+    default: ""
+    },
+
   },
   { timestamps: true }
 );

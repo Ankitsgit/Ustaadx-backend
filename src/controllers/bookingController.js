@@ -37,7 +37,8 @@ const requestBooking = async (req, res) => {
       toUser,
       skill,
       timeslot,
-      message
+      message,
+      status: 'pending', 
     });
     res.status(201).json(booking);
   } catch (err) {
