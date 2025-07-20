@@ -1,4 +1,4 @@
-
+const path = require("path");
 const http = require('http');
 const { Server } = require('socket.io');
 const express = require('express');
@@ -18,7 +18,7 @@ const app = express();
 const server = http.createServer(app); // ✅ Create HTTP server manually
 const io = new Server(server, {
   cors: {
-    origin: 'https://ustaad-x.vercel.app', // your frontend
+    origin: process.env.CLIENT_ORIGIN, // your frontend
     credentials: true
   }
 });
@@ -76,7 +76,7 @@ io.on('connection', (socket) => {
 //   credentials: true,
 // }));
 app.use(cors({
-  origin: 'https://ustaad-x.vercel.app',
+  origin: process.env.CLIENT_ORIGIN,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -84,7 +84,12 @@ app.use(cors({
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// app.use('/uploads', express.static('uploads'));
+app.use((err, req, res, next) => {
+  console.error('Global error handler:', err);
+  res.status(500).json({ message: err.message || 'Internal server error' });
+});
 
 
 //  API Routes

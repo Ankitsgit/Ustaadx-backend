@@ -26,6 +26,7 @@ const getAllUsers = async (req, res) => {
 // };
 // GET /api/users/me
 const getCurrentUser = async (req, res) => {
+  
   try {
     const user = await User.findById(req.user.id).select('-password');
     res.json(user);
@@ -49,25 +50,38 @@ const updateCurrentUser = async (req, res) => {
   }
 };
 
-
-
 const uploadProfileImage = async (req, res) => {
-  try {
-    if (!req.file) return res.status(400).json({ message: 'No image uploaded' });
+  // console.log('--- Upload Profile Image Called ---');
+  // console.log('Headers:', req.headers);
+  // console.log('Body:', req.body);
+  // console.log('File:', req.file);
+  // console.log('User:', req.user);
 
-    const user = await User.findByIdAndUpdate(
+  try {
+    if (!req.file) {
+      console.log('⚠️ No file received');
+      return res.status(400).json({ message: 'No image uploaded' });
+    }
+
+    const imagePath = `/uploads/profile-images/${req.file.filename}`;
+    const fullImageUrl = `${req.protocol}://${req.get('host')}${imagePath}`;
+
+    const updatedUser = await User.findByIdAndUpdate(
       req.user.id,
-      { profileImage: `/uploads/profile-images/${req.file.filename}` },
+      { profileImage: imagePath },
       { new: true }
     );
 
-    res.json({ message: 'Image uploaded successfully', user });
+    res.json({
+      message: 'Image uploaded successfully',
+      user: updatedUser,
+      imageUrl: fullImageUrl
+    });
   } catch (err) {
-    console.error('Upload error:', err);
+    console.error('🔥 Upload error:', err);
     res.status(500).json({ message: err.message });
   }
 };
-
 
 
 
