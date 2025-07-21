@@ -38,21 +38,29 @@
 | **Database**| MongoDB, Mongoose         |
 | **Auth**    | JWT (JSON Web Tokens)     |
 | **Chat**    | Socket.IO (WebSockets)    |
+| **image Upload**    | multer    |
 | **Deployment**| Vercel (frontend), Render/EC2 (backend) |
+
 
 ---
 
 ## 🚀 API Overview
 
-| Method | Endpoint                      | Description                          |
-|--------|-------------------------------|--------------------------------------|
-| POST   | `/api/auth/register`          | Register a new user                  |
-| POST   | `/api/auth/login`             | Login and receive JWT token          |
-| GET    | `/api/users/profile`          | Get user profile                     |
-| POST   | `/api/posts`                  | Create a new skill swap post         |
-| GET    | `/api/posts`                  | Fetch recent skill exchange posts    |
-| GET    | `/api/chat/:userId`           | Fetch messages with a user           |
-| POST   | `/api/chat/send`              | Send a message                       |
+| Method | Endpoint                       | Middleware   | Controller Function        | Description                   |
+|--------|--------------------------------|--------------|-----------------------------|-------------------------------|
+| POST   | `/api/auth/register`           | –            | `register`                  | Register a new user           |
+| POST   | `/api/auth/login`              | –            | `login`                     | Login existing user           |
+| GET    | `/api/users`                   | `protect`    | `getAllUsers`               | Get list of all users         |
+| GET    | `/api/users/me`                | `protect`    | `getCurrentUser`            | Get logged-in user's profile  |
+| PUT    | `/api/users/me`                | `protect`    | `updateCurrentUser`         | Update user profile           |
+| POST   | `/api/users/upload-profile`    | `protect`    | `uploadProfileImage`        | Upload profile image          |
+| GET    | `/api/chat/contacts`           | `protect`    | `getContacts`               | Get chat contacts             |
+| GET    | `/api/chat/:receiverId`        | `protect`    | `getMessages`               | Get messages for a user       |
+| POST   | `/api/chat`                    | `protect`    | `sendMessage`               | Send a chat message           |
+| POST   | `/api/bookings`                | `protect`    | `requestBooking`            | Create a new booking request  |
+| PUT    | `/api/bookings/:id`            | `protect`    | `respondBooking`            | Respond to booking (approve/reject) |
+| GET    | `/api/bookings`                | `protect`    | `getUserBookings`           | Get all bookings for user     |
+
 
 ---
 
