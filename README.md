@@ -146,7 +146,7 @@ We welcome contributions! Here's how you can help:
 3. **Make your changes**
 4. **Run tests**
    ```bash
-   python manage.py test
+   npm test
    ```
 5. **Commit your changes**
    ```bash
@@ -168,19 +168,7 @@ We welcome contributions! Here's how you can help:
 
 ### Code Style
 
-```bash
-# Install development dependencies
-pip install black flake8 isort
 
-# Format code
-black .
-
-# Sort imports
-isort .
-
-# Lint code
-flake8 .
-```
 
 ## 📁 Project Structure
 
